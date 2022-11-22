@@ -10,6 +10,7 @@ public class Main {
     static ArrayList<Book> books = bookM.getBooks();
 
     public static Book handleAddInput() {
+        // try catch error
         System.out.println("Enter book id: ");
         int id = Integer.parseInt(sc.nextLine());
         System.out.println("Enter book name: ");
@@ -53,6 +54,8 @@ public class Main {
     }
 
     public static void executeOption(int option) throws IOException {
+
+        //use switch
 
         if (option == 1) {
             bookM.printBooks(books);

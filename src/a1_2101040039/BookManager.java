@@ -21,9 +21,9 @@ public class BookManager {
         Scanner sc = new Scanner(f1);
         while (sc.hasNext()) {
             String s = sc.nextLine();
-            int id = Integer.parseInt(s.substring(0, 6).trim());
-            String name = s.substring(6, 50);
-            double price = Double.parseDouble(s.substring(50, 60));
+            int id = Integer.parseInt(s.substring(0, 5).trim());
+            String name = s.substring(5, 51);
+            double price = Double.parseDouble(s.substring(51, 62));
             Book book = new Book(id, name, price);
             books.add(book);
         }
