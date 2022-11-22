@@ -49,7 +49,7 @@ public class Main {
         System.out.println();
         System.out.println("0. save & exit");
         System.out.println("-----------------------------------");
-        System.out.println("Your option: ");
+        System.out.print("Your option: ");
     }
 
     public static void executeOption(int option) throws IOException {
