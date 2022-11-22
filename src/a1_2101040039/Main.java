@@ -10,11 +10,11 @@ public class Main {
     static ArrayList<Book> books = bookM.getBooks();
 
     public static Book handleAddInput() {
-        System.out.print("Enter book id: ");
+        System.out.println("Enter book id: ");
         int id = Integer.parseInt(sc.nextLine());
-        System.out.print("Enter book name: ");
+        System.out.println("Enter book name: ");
         String name = sc.nextLine();
-        System.out.print("Enter book price: ");
+        System.out.println("Enter book price: ");
         double price = Double.parseDouble(sc.nextLine());
         return new Book(id, name, price);
     }
