@@ -49,7 +49,7 @@ public class Main {
         System.out.println();
         System.out.println("0. save & exit");
         System.out.println("-----------------------------------");
-        System.out.print("Your option: ");
+        System.out.println("Your option: ");
     }
 
     public static void executeOption(int option) throws IOException {
@@ -58,7 +58,7 @@ public class Main {
             bookM.printBooks(books);
         } else if (option == 2) {
             if (bookM.add(handleAddInput())) {
-                System.out.println("Successfully");
+                System.out.println("Added successfully.");
             } else {
                 System.out.println("Duplicated ID!");
             }
