@@ -35,7 +35,7 @@ public class BookManager {
         if (books.isEmpty()) {
             System.out.println("(empty)");
         } else {
-            System.out.printf("%-5s %-45s %-10s %n", "ID", "Name", "Price");
+            System.out.printf("%n %-5s %-45s %-10s %n", "ID", "Name", "Price");
             for (Book book : books) {
                 System.out.println(book.toString());
             }
@@ -89,7 +89,7 @@ public class BookManager {
             ArrayList<Book> copy = new ArrayList<>(books);
             copy.sort((b1, b2) -> Double.compare(b2.price, b1.price));
             System.out.println("After sorting: ");
-            System.out.printf("%-5s %-45s %-10s %n", "ID", "Name", "Price");
+            System.out.printf("%n %-5s %-45s %-10s %n", "ID", "Name", "Price");
             for (Book book : copy) {
                 System.out.println(book.toString());
             }
