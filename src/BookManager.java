@@ -3,8 +3,6 @@ import java.util.*;
 
 public class BookManager {
     ArrayList<Book> books;
-    boolean bookFind = false;
-
 
     public BookManager() {
         // TODO: your code here
@@ -15,10 +13,6 @@ public class BookManager {
         // TODO: your code here
         return books;
     }
-
-    /**
-     * loading books from file books.txt and adding into this.books
-     */
 
     void loadFromFile() throws FileNotFoundException {
         File f1 = new File("books.txt");
@@ -47,10 +41,6 @@ public class BookManager {
         // TODO: your code here
     }
 
-    /**
-     * if book.id is not duplicated, add book to this.books
-     * return whether added or not
-     */
     public boolean add(Book book) {
         boolean addable = true;
         for (Book value : books) {
@@ -71,6 +61,7 @@ public class BookManager {
      */
 
     public Book getBookById(int id) {
+        boolean bookFind = false;
         Book bookResult = null;
         for (Book book : books) {
             if (id == book.id) {
@@ -79,9 +70,7 @@ public class BookManager {
             } else {
                 bookFind = false;
             }
-        }
-        if (!bookFind) {
-            System.out.println("Invalid ID!");
+            break;
         }
         return bookResult;
     }

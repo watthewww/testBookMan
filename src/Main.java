@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -56,10 +55,17 @@ public class Main {
                 System.out.println("Duplicated ID!");
             }
         } else if (option == 3) {
-            handleEditInput(bookM.getBookById(idInput()));
-            System.out.println("Updated successfully.");
+            if (bookM.getBookById(idInput()) == null) {
+                System.out.println("Invalid ID!");
+            } else {
+                handleEditInput(bookM.getBookById(idInput()));
+                System.out.println("Updated successfully.");
+            }
         } else if (option == 4) {
-            bookM.remove(bookM.getBookById(idInput()));
+            if (bookM.getBookById(idInput()) == null) {
+                System.out.println("Invalid ID!");
+            } else {
+                bookM.remove(bookM.getBookById(idInput())); }
         } else if (option == 5) {
             System.out.println("5");
         } else if (option == 6) {
