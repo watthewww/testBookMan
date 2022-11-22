@@ -115,6 +115,7 @@ public class BookManager {
             output.write(String.valueOf(book));
             output.newLine();
         }
+        System.out.println("Saving to file...");
         System.out.println("Bye!");
         output.close();
     }
