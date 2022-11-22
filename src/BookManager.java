@@ -30,11 +30,11 @@ public class BookManager {
     }
 
     public void printBooks(ArrayList<Book> books) {
-        System.out.printf("%-5s %-45s %-10s %n", "ID", "Name", "Price");
-        for (Book book : books) {
-            if (books.isEmpty()) {
-                System.out.println("(empty)");
-            } else {
+        if (books.isEmpty()) {
+            System.out.println("(empty)");
+        } else {
+            System.out.printf("%-5s %-45s %-10s %n", "ID", "Name", "Price");
+            for (Book book : books) {
                 System.out.println(book.toString());
             }
         }
@@ -61,14 +61,10 @@ public class BookManager {
      */
 
     public Book getBookById(int id) {
-        boolean bookFind = false;
         Book bookResult = null;
         for (Book book : books) {
             if (id == book.id) {
-                bookFind = true;
                 bookResult = book;
-            } else {
-                bookFind = false;
             }
             break;
         }
@@ -80,14 +76,23 @@ public class BookManager {
      */
     public void remove(Book book) {
         books.remove(book);
-        System.out.println("Deleted Successfully.");
     }
 
     /**
      * update this.books to be sorted by price from high -> low
      */
     public void sortDescByPrice() {
-        // TODO: your code here
+        ArrayList <Book> copy = new ArrayList<>(books);
+        if (books.isEmpty()) {
+            System.out.println("(empty)");
+        } else {
+            copy.sort((b1, b2) -> Double.compare(b2.price, b1.price));
+            System.out.println("After sorting: ");
+            System.out.printf("%-5s %-45s %-10s %n", "ID", "Name", "Price");
+            for (Book book : copy) {
+                System.out.println(book.toString());
+            }
+        }
     }
 
     /**

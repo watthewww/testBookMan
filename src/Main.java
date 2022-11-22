@@ -65,11 +65,13 @@ public class Main {
             if (bookM.getBookById(idInput()) == null) {
                 System.out.println("Invalid ID!");
             } else {
-                bookM.remove(bookM.getBookById(idInput())); }
+                bookM.remove(bookM.getBookById(idInput()));
+                System.out.println("Deleted Successfully.");
+            }
         } else if (option == 5) {
             System.out.println("5");
         } else if (option == 6) {
-            System.out.println("6");
+            bookM.sortDescByPrice();
         } else if (option == 0) {
             bookM.saveToFile();
         } else {
