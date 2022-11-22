@@ -61,17 +61,19 @@ public class Main {
                 System.out.println("Duplicated ID!");
             }
         } else if (option == 3) {
-            if (bookM.getBookById(idInput()) == null) {
+            Book book = bookM.getBookById(idInput());
+            if (book == null) {
                 System.out.println("Invalid ID!");
             } else {
-                handleEditInput(bookM.getBookById(idInput()));
+                handleEditInput(book);
                 System.out.println("Updated successfully.");
             }
         } else if (option == 4) {
-            if (bookM.getBookById(idInput()) == null) {
+            Book book = bookM.getBookById(idInput());
+            if (book == null) {
                 System.out.println("Invalid ID!");
             } else {
-                bookM.remove(bookM.getBookById(idInput()));
+                bookM.remove(book);
                 System.out.println("Deleted Successfully.");
             }
         } else if (option == 5) {

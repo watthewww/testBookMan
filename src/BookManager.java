@@ -66,7 +66,6 @@ public class BookManager {
             if (id == book.id) {
                 bookResult = book;
             }
-            break;
         }
         return bookResult;
     }
