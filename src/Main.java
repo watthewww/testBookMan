@@ -29,6 +29,12 @@ public class Main {
         return Integer.parseInt(sc.nextLine());
     }
 
+    public static String nameInput() {
+        System.out.print("Enter keyword: ");
+        String keyword = sc.nextLine();
+        return keyword;
+    }
+
 
     public static void consoleMenu() {
         System.out.println("-----------------------------------");
@@ -69,15 +75,23 @@ public class Main {
                 System.out.println("Deleted Successfully.");
             }
         } else if (option == 5) {
-            System.out.println("5");
-        } else if (option == 6) {
+            ArrayList<Book> matches = new ArrayList<>(bookM.searchByName(nameInput()));
+            if (matches.isEmpty()) {
+                    System.out.println("(empty)");
+                } else {
+                    for (Book book : matches) {
+                        System.out.println(book);
+                    }
+                }
+            }
+        else if (option == 6) {
             bookM.sortDescByPrice();
         } else if (option == 0) {
             bookM.saveToFile();
         } else {
             System.out.println("Invalid option!");
         }
-    }
+        }
 
     public static void main(String[] args) throws IOException {
         int option;

@@ -85,7 +85,7 @@ public class BookManager {
         if (books.isEmpty()) {
             System.out.println("(empty)");
         } else {
-            ArrayList <Book> copy = new ArrayList<>(books);
+            ArrayList<Book> copy = new ArrayList<>(books);
             copy.sort((b1, b2) -> Double.compare(b2.price, b1.price));
             System.out.println("After sorting: ");
             System.out.printf("%-5s %-45s %-10s %n", "ID", "Name", "Price");
@@ -100,9 +100,11 @@ public class BookManager {
      */
     public ArrayList<Book> searchByName(String keyword) {
         ArrayList<Book> matches = new ArrayList<>();
-
-        // TODO: your code here
-
+        for (Book book : books) {
+            if (book.name.toLowerCase().contains(keyword.toLowerCase())) {
+                matches.add(book);
+            }
+        }
         return matches;
     }
 
