@@ -82,10 +82,10 @@ public class BookManager {
      * update this.books to be sorted by price from high -> low
      */
     public void sortDescByPrice() {
-        ArrayList <Book> copy = new ArrayList<>(books);
         if (books.isEmpty()) {
             System.out.println("(empty)");
         } else {
+            ArrayList <Book> copy = new ArrayList<>(books);
             copy.sort((b1, b2) -> Double.compare(b2.price, b1.price));
             System.out.println("After sorting: ");
             System.out.printf("%-5s %-45s %-10s %n", "ID", "Name", "Price");
@@ -115,7 +115,6 @@ public class BookManager {
         }
         System.out.println("Bye!");
         output.close();
-        // TODO: your code here
     }
 }
 
