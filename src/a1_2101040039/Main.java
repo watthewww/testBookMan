@@ -20,14 +20,14 @@ public class Main {
     }
 
     public static void handleEditInput(Book book) {
-        System.out.print("Enter book name: ");
+        System.out.println("Enter book name: ");
         book.name = sc.nextLine();
-        System.out.print("enter book price: ");
+        System.out.println("enter book price: ");
         book.price = Double.parseDouble(sc.nextLine());
     }
 
     public static int idInput() {
-        System.out.print("Enter book id: ");
+        System.out.println("Enter book id: ");
         return Integer.parseInt(sc.nextLine());
     }
 
