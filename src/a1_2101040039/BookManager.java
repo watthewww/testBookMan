@@ -58,9 +58,6 @@ public class BookManager {
         return addable;
     }
 
-    /**
-     * return book specified by id, null if not found
-     */
 
     public Book getBookById(int id) {
         Book bookResult = null;
@@ -72,16 +69,10 @@ public class BookManager {
         return bookResult;
     }
 
-    /**
-     * remove book from this.books
-     */
     public void remove(Book book) {
         books.remove(book);
     }
 
-    /**
-     * update this.books to be sorted by price from high -> low
-     */
     public void sortDescByPrice() {
         if (books.isEmpty()) {
             System.out.println("(empty)");
@@ -96,9 +87,7 @@ public class BookManager {
         }
     }
 
-    /**
-     * return all books having name contains keyword (case in-sensitive)
-     */
+
     public ArrayList<Book> searchByName(String keyword) {
         ArrayList<Book> matches = new ArrayList<>();
         for (Book book : books) {

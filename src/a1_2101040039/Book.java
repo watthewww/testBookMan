@@ -1,7 +1,6 @@
 package a1_2101040039;
 
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class Book implements Serializable {
     int id;
