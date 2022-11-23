@@ -21,8 +21,8 @@ public class BookManager {
         Scanner sc = new Scanner(f1);
         while (sc.hasNext()) {
             String s = sc.nextLine();
-            int id = Integer.parseInt(s.substring(0, 5).trim());
-            String name = s.substring(5, 51);
+            int id = Integer.parseInt(s.substring(0, 6).trim());
+            String name = s.substring(6, 51);
             double price = Double.parseDouble(s.substring(51, 62));
             Book book = new Book(id, name, price);
             books.add(book);
@@ -47,7 +47,7 @@ public class BookManager {
         boolean addable = true;
         for (Book value : books) {
             int idAvail = value.id;
-            if (book.id == idAvail) {
+            if (book.id == idAvail || book.id == 0 || book.price == 0) {
                 addable = false;
                 break;
             }

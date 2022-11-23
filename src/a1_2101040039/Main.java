@@ -10,26 +10,41 @@ public class Main {
     static ArrayList<Book> books = bookM.getBooks();
 
     public static Book handleAddInput() {
-        // try catch error
-        System.out.println("Enter book id: ");
-        int id = Integer.parseInt(sc.nextLine());
-        System.out.println("Enter book name: ");
-        String name = sc.nextLine();
-        System.out.println("Enter book price: ");
-        double price = Double.parseDouble(sc.nextLine());
+        int id = 0;
+        String name = "";
+        double price = 0;
+        try {
+            System.out.println("Enter book id: ");
+            id = Integer.parseInt(sc.nextLine());
+            System.out.println("Enter book name: ");
+            name = sc.nextLine();
+            System.out.println("Enter book price: ");
+            price = Double.parseDouble(sc.nextLine());
+        } catch (NumberFormatException nfe) {
+            System.out.println("Invalid input.");
+        }
         return new Book(id, name, price);
     }
 
     public static void handleEditInput(Book book) {
         System.out.println("Enter book name: ");
         book.name = sc.nextLine();
-        System.out.println("enter book price: ");
-        book.price = Double.parseDouble(sc.nextLine());
+        try {
+            System.out.println("Enter book price: ");
+            book.price = Double.parseDouble(sc.nextLine());
+        } catch (NumberFormatException nfe) {
+            System.out.println("Invalid input.");
+        }
     }
 
     public static int idInput() {
+        int idInput = 0;
+        try {
         System.out.println("Enter book id: ");
-        return Integer.parseInt(sc.nextLine());
+        idInput = Integer.parseInt(sc.nextLine());
+    } catch (NumberFormatException nfe) {
+            System.out.println("Invalid input.");}
+        return idInput;
     }
 
     public static String nameInput() {
@@ -55,50 +70,66 @@ public class Main {
 
     public static void executeOption(int option) throws IOException {
 
-        //use switch
+        switch (option) {
+            case 1:
+                bookM.printBooks(books);
+                break;
 
-        if (option == 1) {
-            bookM.printBooks(books);
-        } else if (option == 2) {
-            if (bookM.add(handleAddInput())) {
-                System.out.println("Added successfully.");
-            } else {
-                System.out.println("Duplicated ID!");
-            }
-        } else if (option == 3) {
-            Book book = bookM.getBookById(idInput());
-            if (book == null) {
-                System.out.println("Invalid ID!");
-            } else {
-                handleEditInput(book);
-                System.out.println("Updated successfully.");
-            }
-        } else if (option == 4) {
-            Book book = bookM.getBookById(idInput());
-            if (book == null) {
-                System.out.println("Invalid ID!");
-            } else {
-                bookM.remove(book);
-                System.out.println("Deleted Successfully.");
-            }
-        } else if (option == 5) {
-            ArrayList<Book> matches = new ArrayList<>(bookM.searchByName(nameInput()));
-            if (matches.isEmpty()) {
+            case 2:
+                Book book2 = handleAddInput();
+                if (bookM.add(book2)) {
+                    System.out.println("Added successfully.");
+                } else {
+                    if (book2.id == 0 || book2.price == 0) {
+                        System.out.println("Unable to add book.");
+                    } else {
+                        System.out.println("Duplicated ID!");
+                    }
+                }
+                break;
+
+            case 3:
+                Book book3 = bookM.getBookById(idInput());
+                if (book3 == null) {
+                    System.out.println("Invalid ID!");
+                } else {
+                    handleEditInput(book3);
+                    System.out.println("Updated successfully.");
+                }
+                break;
+
+            case 4:
+                Book book4 = bookM.getBookById(idInput());
+                if (book4 == null) {
+                    System.out.println("Invalid ID!");
+                } else {
+                    bookM.remove(book4);
+                    System.out.println("Deleted Successfully.");
+                }
+                break;
+
+            case 5:
+                ArrayList<Book> matches = new ArrayList<>(bookM.searchByName(nameInput()));
+                if (matches.isEmpty()) {
                     System.out.println("(empty)");
                 } else {
                     for (Book book : matches) {
                         System.out.println(book);
                     }
                 }
-            }
-        else if (option == 6) {
-            bookM.sortDescByPrice();
-        } else if (option == 0) {
-            bookM.saveToFile();
-        } else {
-            System.out.println("Invalid option!");
+                break;
+
+            case 6:
+                bookM.sortDescByPrice();
+                break;
+
+            case 0:
+                bookM.saveToFile();
+                break;
+            default:
+                System.out.println("Invalid option!");
         }
-        }
+    }
 
     public static void main(String[] args) throws IOException {
         int option;
